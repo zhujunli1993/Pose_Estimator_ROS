@@ -1,84 +1,31 @@
 # Contrastive Pose
-Pytorch implementation of HRC-Pose: Learning Point Cloud Representations with Pose Continuity for Category-Level 6D Object Pose Estimation.
-
-## Table of Contents  
-
-- HRC-Pose
-  - Table of Content
-  - Installation
-  - Code Structure
-  - Datasets
-  - Training
-  - Evaluation
-    
+Pytorch implementation of our category-level pose estimation for ROS.
 
 ## Installation - From Pip
 ```shell
-cd HRC-Pose
+cd Pose_Estimator_ROS
 pip install -r requirements.txt
 ```
-## Code Structure
+
+## Start Running 
+```shell
+cd Pose_Estimator_ROS
+sh script.sh
+```
+
+## Script Parameters
 <details>
   <summary>[Click to expand]</summary>
 
-- **HRC-Pose**
-  - **HRC-Pose/backbone**: Some backbone networks used in the first training phase.
-  - **HRC-Pose/config**
-    - **HRC-Pose/config/common.py**: Some network and datasets settings for experiments.  
-  - **HRC-Pose/contrast**
-    - **HRC-Pose/contrast/Cont_split_rot.py**: Contrast learning codes for rotation.
-    - **HRC-Pose/contrast/Cont_split_trans.py**: Contrast learning codes for translation.
-    - **HRC-Pose/contrast/rnc_loss.py**: Contrast learning loss functions.
-    - **HRC-Pose/contrast/Rot_3DGC.py**: Backbone networks used for rotation.
-    - **HRC-Pose/contrast/utils.py**: Some utilities functions.
-  - **HRC-Pose/datasets**
-    - **HRC-Pose/datasets/data_augmentation.py**: Data augmentation functions.
-    - **HRC-Pose/datasets/load_data_contrastive.py**: Data loading functions for the first training phase.
-    - **HRC-Pose/datasets/load_data.py**： Data loading functions for the second training phase.
-  - **HRC-Pose/engine**
-    - **HRC-Pose/engine/organize_loss.py**: Loss terms for training phase.
-    - **HRC-Pose/engine/train_estimator.py**: The training phase.
-  - **HRC-Pose/evaluation**
-    - **HRC-Pose/evaluation/eval_utils_v1.py**: basic function for evaluation.
-    - **HRC-Pose/evaluation/evaluate.py**: evaluation codes to evaluate our model's performance.
-    - **HRC-Pose/evaluation/load_data_eval.py**: Data loading functions for the evaluation.
-  - **HRC-Pose/losses**
-      - **HRC-Pose/losses/fs_net_loss.py**: Loss functions from the FS-Net.
-      - **HRC-Pose/losses/geometry_loss.py**: Loss functions from the GPV-Pose.
-      - **HRC-Pose/losses/prop_loss.py**: Loss functions from the GPV-Pose.
-      - **HRC-Pose/losses/recon_loss.py**: Loss functions from the GPV-Pose.
-  - **HRC-Pose/mmcv**: MMCV packages.
-  - **HRC-Pose/network**
-    - **HRC-Pose/network/fs_net_repo**
-        - **HRC-Pose/network/fs_net_repo/FaceRecon.py**: The reconstruction codes from the HS-Pose.
-        - **HRC-Pose/network/fs_net_repo/gcn3d.py**: The 3DGCN codes from the HS-Pose.
-        - **HRC-Pose/network/fs_net_repo/PoseNet9D.py**: The pose estimation codes.
-        - **HRC-Pose/network/fs_net_repo/PoseR.py**: The rotation head codes.
-        - **HRC-Pose/network/fs_net_repo/PoseTs.py**: The translation and size heads codes.
-        - **HRC-Pose/network/fs_net_repo/PoseTs.py**: The translation and size heads codes.
-    - **HRC-Pose/network/Pose_Estimator.py**: The training codes.
-  - **HRC-Pose/tools**: Some neccessary functions for point cloud processing. 
+- **script.sh**
+  - **pretrained_clip_rot_model_path**: Pretrained Contrast Rotation Model
+  - **pretrained_clip_t_model_path**: Pretrained Contrast Translation Model
+  - **resume_model**: Pretrained Estimator Model
+  - **depth_pth**: The Saved Path of Depth image from ROS
+  - **detection_pth**: The Saved Path of MaskRCNN Mask Results from ROS
+  - **label_pth**: The Saved Path of MaskRCNN Class Label Results from ROS
+  - **bbox_pth**: The Saved Path of Bounding box from ROS
+  - **ROS_RGB_pth**: The Saved Path of RGB Image from ROS
+  - **ROS_output**: The Output Folder Path
+  - **ROS_save_result_name**: The Output File Name
 </details>
-
-## Dataset.
-The datasets we used for training and testing are provided from the NOCS: Normalized Object Coordinate Space for Category-Level 6D Object Pose and Size Estimation. 
-
-
-## The First Training Phase.
-Please note, some details are changed from the original paper for more efficient training. 
-
-
-Detailed configurations are in `config/config.py` and `script.sh`
-
-## The Training Process.
-
-```shell
-python -m engine.train_estimator 
-```
-Detailed configurations are in `config/config.py` and `script.sh`
-
-## Evaluation
-```shell
-python -m evaluation.evaluate 
-```
-Detailed configurations are in `config/config.py` and `script.sh`
