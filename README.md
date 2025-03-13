@@ -13,7 +13,7 @@ cd Pose_Estimator_ROS
 sh script.sh
 ```
 
-## Script Parameters
+## Script Parameters Details
 <details>
   <summary>[Click to expand]</summary>
 
@@ -30,4 +30,21 @@ sh script.sh
   - **ROS_save_result_name**: The Output File Name
 </details>
 
+## Visualizations
+#### An example of bounding box projected via predicted poses and scales 
+
+Predicted 6D poses are saved in 
+```shell
+ROS_output/4.pred_RT.txt
+```
+Predicted 3D scales are saved in 
+```shell
+ROS_output/4.pred_scales.txt
+```
+Predicted class are saved in 
+```shell
+ROS_output/4.pred_class.txt
+```
+
 ![plot](ROS_output/4.png)
+
