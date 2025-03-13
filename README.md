@@ -30,4 +30,4 @@ sh script.sh
   - **ROS_save_result_name**: The Output File Name
 </details>
 
-![plot](.ROS_output/4.png)
+![plot](ROS_output/4.png)
