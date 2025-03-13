@@ -1,4 +1,4 @@
-# Contrastive Pose
+# Our Category-Level Pose Estimation for ROS
 Pytorch implementation of our category-level pose estimation for ROS.
 
 ## Installation - From Pip
@@ -29,3 +29,5 @@ sh script.sh
   - **ROS_output**: The Output Folder Path
   - **ROS_save_result_name**: The Output File Name
 </details>
+
+![plot](.ROS_output/4.png)
